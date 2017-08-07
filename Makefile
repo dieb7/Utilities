@@ -14,8 +14,7 @@ endif
 CPP_PLATFORM = Gcc
 
 SRC_DIRS = \
-    src\
-    src/*
+    src
 
 # to pick specific files (rather than directories) use this:    
 SRC_FILES = 
@@ -30,7 +29,6 @@ MOCKS_SRC_DIRS = \
 INCLUDE_DIRS =\
   .\
   include \
-  include/* \
   $(CPPUTEST_HOME)/include/ \
   $(CPPUTEST_HOME)/include/Platforms/Gcc\
   mocks
