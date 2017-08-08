@@ -4,13 +4,14 @@
 
 class Queue
 {
-    public:
-        Queue();
-        virtual ~Queue();
+public:
+    Queue();
+    virtual ~Queue();
 
-    protected:
+protected:
 
-    private:
+private:
+
 };
 
 #endif // QUEUE_H

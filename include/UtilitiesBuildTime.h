@@ -9,20 +9,20 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 class UtilitiesBuildTime
-  {
-  public:
+{
+public:
     explicit UtilitiesBuildTime();
     virtual ~UtilitiesBuildTime();
-    
+
     const char* GetDateTime();
 
-  private:
-      
+private:
+
     const char* dateTime;
 
     UtilitiesBuildTime(const UtilitiesBuildTime&);
     UtilitiesBuildTime& operator=(const UtilitiesBuildTime&);
 
-  };
+};
 
 #endif  // D_UtilitiesBuildTime_H

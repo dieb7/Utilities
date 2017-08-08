@@ -1,7 +1,7 @@
 #include "UtilitiesBuildTime.h"
 
 UtilitiesBuildTime::UtilitiesBuildTime()
-: dateTime(__DATE__ " " __TIME__)
+    : dateTime(__DATE__ " " __TIME__)
 {
 }
 

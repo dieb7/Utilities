@@ -5,20 +5,20 @@
 
 TEST_GROUP(Queue)
 {
-  Queue* queue;
+    Queue* queue;
 
-  void setup()
-  {
-    queue = new Queue();
-  }
-  void teardown()
-  {
-    delete queue;
-  }
+    void setup()
+    {
+        queue = new Queue();
+    }
+    void teardown()
+    {
+        delete queue;
+    }
 };
 
 TEST(Queue, Create)
 {
-  FAIL("Start here");
+    FAIL("Start here");
 }
 
