@@ -5,12 +5,10 @@ TEST_GROUP(UtilitiesBuildTime)
 {
     UtilitiesBuildTime* projectBuildTime;
 
-    void setup()
-    {
+    void setup() {
         projectBuildTime = new UtilitiesBuildTime();
     }
-    void teardown()
-    {
+    void teardown() {
         delete projectBuildTime;
     }
 };

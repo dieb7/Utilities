@@ -7,12 +7,10 @@ TEST_GROUP(Queue)
 {
     Queue* queue;
 
-    void setup()
-    {
+    void setup() {
         queue = new Queue();
     }
-    void teardown()
-    {
+    void teardown() {
         delete queue;
     }
 };
