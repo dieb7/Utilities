@@ -18,7 +18,10 @@ public:
 protected:
 
 private:
-    int Buffer[15];
+    int Buffer[5];
+
+    unsigned int Head;
+    unsigned int Tail;
 };
 
 #endif // QUEUE_H

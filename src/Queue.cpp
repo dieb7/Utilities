@@ -3,6 +3,8 @@
 Queue::Queue()
 {
     //ctor
+    Head = 0;
+    Tail = 0;
 }
 
 Queue::~Queue()
@@ -12,22 +14,22 @@ Queue::~Queue()
 
 void Queue::Push(int element)
 {
-
+    Buffer[Tail++] = element;
 }
 
 int Queue::Pop()
 {
-    return 0;
+    return Buffer[Head++];
 }
 
 bool Queue::Empty()
 {
-    return false;
+    return Head == Tail;
 }
 
 bool Queue::Full()
 {
-    return false;
+    return (Size() - (Tail - Head)) == 1;
 }
 
 unsigned int Queue::Size()
