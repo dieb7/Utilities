@@ -45,6 +45,8 @@ TEST(Queue, pushPopSimple)
     CHECK_EQUAL(5, queue->Pop());
     CHECK_EQUAL(4, queue->Pop());
     CHECK_EQUAL(3, queue->Pop());
+
+    CHECK(queue->Empty());
 }
 
 TEST(Queue, pushToFull0)
@@ -60,6 +62,13 @@ TEST(Queue, pushToFull0)
     CHECK_EQUAL(4, queue->Pop());
     CHECK_EQUAL(3, queue->Pop());
     CHECK_EQUAL(2, queue->Pop());
+
+    CHECK(queue->Empty());
+
+    // this should not return, we are empty
+    CHECK_EQUAL(0, queue->Pop());
+    CHECK_EQUAL(0, queue->Pop());
+    CHECK_EQUAL(0, queue->Pop());
 }
 
 TEST(Queue, pushToFull1)
@@ -77,6 +86,8 @@ TEST(Queue, pushToFull1)
     CHECK_EQUAL(3, queue->Pop());
     CHECK_EQUAL(2, queue->Pop());
     CHECK_EQUAL(1, queue->Pop());
+
+    CHECK(queue->Empty());
 }
 
 TEST(Queue, pushToFull2)
@@ -96,5 +107,136 @@ TEST(Queue, pushToFull2)
     CHECK_EQUAL(3, queue->Pop());
     CHECK_EQUAL(2, queue->Pop());
     CHECK_EQUAL(1, queue->Pop());
+    CHECK_EQUAL(0, queue->Pop());
+
+    CHECK(queue->Empty());
+}
+
+TEST(Queue, pushPassFull0)
+{
+    queue->Push(5);
+    queue->Push(4);
+    queue->Push(3);
+    queue->Push(2);
+
+    // we are full, this should not be pushed
+    queue->Push(99);
+    queue->Push(88);
+    queue->Push(77);
+    queue->Push(66);
+
+    CHECK_EQUAL(5, queue->Pop());
+    CHECK_EQUAL(4, queue->Pop());
+    CHECK_EQUAL(3, queue->Pop());
+    CHECK_EQUAL(2, queue->Pop());
+}
+
+TEST(Queue, pushPassFull1)
+{
+    queue->Push(5);
+    queue->Pop();
+    queue->Push(4);
+    queue->Push(3);
+    queue->Push(2);
+    queue->Push(1);
+
+    // we are full, this should not be pushed
+    queue->Push(99);
+    queue->Push(88);
+    queue->Push(77);
+    queue->Push(66);
+
+    CHECK_EQUAL(4, queue->Pop());
+    CHECK_EQUAL(3, queue->Pop());
+    CHECK_EQUAL(2, queue->Pop());
+    CHECK_EQUAL(1, queue->Pop());
+}
+
+TEST(Queue, pushPassFull2)
+{
+    queue->Push(5);
+    queue->Pop();
+    queue->Push(4);
+    queue->Pop();
+
+    queue->Push(3);
+    queue->Push(2);
+    queue->Push(1);
+    queue->Push(0);
+
+    // we are full, this should not be pushed
+    queue->Push(99);
+    queue->Push(88);
+    queue->Push(77);
+    queue->Push(66);
+
+    CHECK_EQUAL(3, queue->Pop());
+    CHECK_EQUAL(2, queue->Pop());
+    CHECK_EQUAL(1, queue->Pop());
+    CHECK_EQUAL(0, queue->Pop());
+}
+
+TEST(Queue, popPassEmpty0)
+{
+    queue->Push(5);
+    queue->Push(4);
+    queue->Push(3);
+    queue->Push(2);
+
+    CHECK_EQUAL(5, queue->Pop());
+    CHECK_EQUAL(4, queue->Pop());
+    CHECK_EQUAL(3, queue->Pop());
+    CHECK_EQUAL(2, queue->Pop());
+
+    //we are empty, nothing to pop
+    CHECK_EQUAL(0, queue->Pop());
+    CHECK_EQUAL(0, queue->Pop());
+    CHECK_EQUAL(0, queue->Pop());
+    CHECK_EQUAL(0, queue->Pop());
+
+}
+
+TEST(Queue, popPassEmpty1)
+{
+    queue->Push(5);
+    queue->Pop();
+    queue->Push(4);
+    queue->Push(3);
+    queue->Push(2);
+    queue->Push(1);
+
+    CHECK_EQUAL(4, queue->Pop());
+    CHECK_EQUAL(3, queue->Pop());
+    CHECK_EQUAL(2, queue->Pop());
+    CHECK_EQUAL(1, queue->Pop());
+
+    //we are empty, nothing to pop
+    CHECK_EQUAL(0, queue->Pop());
+    CHECK_EQUAL(0, queue->Pop());
+    CHECK_EQUAL(0, queue->Pop());
+    CHECK_EQUAL(0, queue->Pop());
+}
+
+TEST(Queue, popPassEmpty2)
+{
+    queue->Push(5);
+    queue->Pop();
+    queue->Push(4);
+    queue->Pop();
+
+    queue->Push(3);
+    queue->Push(2);
+    queue->Push(1);
+    queue->Push(0);
+
+    CHECK_EQUAL(3, queue->Pop());
+    CHECK_EQUAL(2, queue->Pop());
+    CHECK_EQUAL(1, queue->Pop());
+    CHECK_EQUAL(0, queue->Pop());
+
+    //we are empty, nothing to pop
+    CHECK_EQUAL(0, queue->Pop());
+    CHECK_EQUAL(0, queue->Pop());
+    CHECK_EQUAL(0, queue->Pop());
     CHECK_EQUAL(0, queue->Pop());
 }

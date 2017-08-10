@@ -14,12 +14,24 @@ Queue::~Queue()
 
 void Queue::Push(int element)
 {
-    Buffer[Tail++] = element;
+    if (!Full()) {
+        Buffer[Tail++] = element;
+        if (Tail == Size()) {
+            Tail = 0;
+        }
+    }
 }
 
 int Queue::Pop()
 {
-    return Buffer[Head++];
+    int element = 0;
+    if (!Empty()) {
+        element = Buffer[Head++];
+        if (Head == Size()) {
+            Head = 0;
+        }
+    }
+    return element;
 }
 
 bool Queue::Empty()
@@ -29,7 +41,11 @@ bool Queue::Empty()
 
 bool Queue::Full()
 {
-    return (Size() - (Tail - Head)) == 1;
+    if (Head < Tail) {
+        return (Size() - (Tail - Head)) == 1;
+    } else {
+        return (Head - Tail) == 1;
+    }
 }
 
 unsigned int Queue::Size()
