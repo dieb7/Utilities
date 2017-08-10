@@ -6,9 +6,10 @@
 TEST_GROUP(Queue)
 {
     Queue* queue;
+    int buff[5];
 
     void setup() {
-        queue = new Queue();
+        queue = new Queue(buff, 5);
     }
     void teardown() {
         delete queue;

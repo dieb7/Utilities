@@ -5,7 +5,7 @@
 class Queue
 {
 public:
-    Queue();
+    Queue(int buff[], unsigned int buffSize);
     virtual ~Queue();
 
     void Push(int element);
@@ -18,7 +18,8 @@ public:
 protected:
 
 private:
-    int Buffer[5];
+    int * Buffer;
+    unsigned int BufferSize;
 
     unsigned int Head;
     unsigned int Tail;

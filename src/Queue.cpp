@@ -1,10 +1,13 @@
 #include "Queue.h"
 
-Queue::Queue()
+Queue::Queue(int buff[], unsigned int buffSize)
 {
     //ctor
     Head = 0;
     Tail = 0;
+
+    Buffer = buff;
+    BufferSize = buffSize;
 }
 
 Queue::~Queue()
@@ -50,5 +53,5 @@ bool Queue::Full()
 
 unsigned int Queue::Size()
 {
-    return sizeof(Buffer)/sizeof(Buffer[0]);
+    return BufferSize;
 }
