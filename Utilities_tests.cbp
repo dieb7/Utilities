@@ -34,7 +34,6 @@
 		<Unit filename="Makefile" />
 		<Unit filename="include/Queue.h" />
 		<Unit filename="include/UtilitiesBuildTime.h" />
-		<Unit filename="src/Queue.cpp" />
 		<Unit filename="src/UtilitiesBuildTime.cpp" />
 		<Unit filename="tests/AllTests.cpp" />
 		<Unit filename="tests/Queue/QueueTest.cpp" />
